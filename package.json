@@ -10,7 +10,8 @@
     "ganache": "ganache-cli --networkId $npm_package_config_ganache_networkId --allowUnlimitedContractSize --gasLimit $npm_package_config_ganache_gasLimit --gasPrice $npm_package_config_ganache_gasPrice --mnemonic \"`cat secrets/.mnemonic`\"",
     "migrate": "rm -rf build && truffle migrate --reset --compile-all --network development",
     "migrate:rinkeby": "rm -rf build && truffle migrate --reset --compile-all --network rinkeby",
-    "test": "concurrently \"npm run ganache\" \"npm run migrate && truffle test\" --kill-others --success first"
+    "test": "concurrently \"npm run ganache\" \"npm run migrate && truffle test\" --kill-others --success first",
+    "start": "concurrently \"yarn run ganache\" \"yarn run migrate\""
   },
   "repository": {
     "type": "git",

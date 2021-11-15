@@ -1,0 +1,34 @@
+{
+  "name": "start-engine-ldgr",
+  "version": "1.0.0",
+  "description": "StartEngine LDGR Security Token Protocol",
+  "main": "truffle.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "ganache": "ganache-cli --networkId $npm_package_config_ganache_networkId --allowUnlimitedContractSize --gasLimit $npm_package_config_ganache_gasLimit --gasPrice $npm_package_config_ganache_gasPrice --mnemonic \"`cat secrets/.mnemonic`\"",
+    "migrate": "rm -rf build && truffle migrate --reset --compile-all --network development",
+    "migrate:rinkeby": "rm -rf build && truffle migrate --reset --compile-all --network rinkeby",
+    "test": "concurrently \"npm run ganache\" \"npm run migrate && truffle test\" --kill-others --success first"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/StartEngine/ldgr_smart_contracts.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/StartEngine/ldgr_smart_contracts/issues"
+  },
+  "homepage": "https://github.com/StartEngine/ldgr_smart_contracts#readme",
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "chai-as-promised": "^7.1.1",
+    "@truffle/hdwallet-provider": "^1.6.0",
+    "concurrently": "^6.4.0",
+    "ganache": "^6.4.5",
+    "ganache-cli": "^6.12.2"
+  }
+}
